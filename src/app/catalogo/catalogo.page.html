@@ -1,23 +1,39 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Partidos</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button routerLink='../' fill="clear">
+        <img src="assets/img/Icono.png" height="45">
+      </ion-button>
+      <ion-button routerLink='../' fill="clear" color="light"> Inicio </ion-button>
+      <ion-button [routerLink]="['../catalogo']" fill="clear" color="light"> Partidos </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header> Partidos en curso </ion-list-header>
-    <ion-item *ngFor="let partido of partidos">
-      <ion-label>
-        <h2>
-          {{partido.equipo1.nombre}} <img src={{partido.equipo1.logo}} width="25" height="25"/>
-          VS {{partido.equipo2.nombre}} <img src={{partido.equipo2.logo}} width="25" height="25"/>
-        </h2>
-        <h3>
-          Estado: {{partido.estado}}
-        </h3>
-        <ion-button href="#" color="primary"> Detalles </ion-button>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-card>
+    <ion-card-header color="warning">
+      <ion-text  style = "text-align: center" color="light">
+        <h4>Lista de Partidos</h4>
+      </ion-text>
+    </ion-card-header>
+    <ion-list>
+      <ion-list-header> Mira lo que está sucediendo en la primera división </ion-list-header>
+      <ion-item *ngFor="let partido of partidos">
+        <ion-label>
+          <h2>
+            {{partido.equipo1.nombre}} <img src={{partido.equipo1.logo}} width="25" height="25" /> {{partido.gol1}}
+            - {{partido.gol2}} <img src={{partido.equipo2.logo}} width="25" height="25" /> {{partido.equipo2.nombre}}
+          </h2>
+          <h3>Estado: {{partido.estado}}</h3>
+        </ion-label>
+        <ion-label slot="end">
+          <ion-button [routerLink]="['detalle',partido.id]" color="secondary">
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+            Detalles
+          </ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>

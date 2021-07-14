@@ -1,20 +1,64 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Detalle de Partido</ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button routerLink='../' fill="clear">
+        <img src="assets/img/Icono.png" height="45">
+      </ion-button>
+      <ion-button routerLink='/' fill="clear" color="light"> Inicio </ion-button>
+      <ion-button [routerLink]="['/catalogo']" fill="clear" color="light"> Partidos </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-grid>
-    <ion-row>
-      {{partido.equipo1.nombre}} <img src={{partido.equipo1.logo}} width="25" height="25"/> VS
-      {{partido.equipo2.nombre}} <img src={{partido.equipo2.logo}} width="25" height="25"/>
-    </ion-row>
-    <ion-row>
-      Estado: {{partido.estado}}
-    </ion-row>
-  </ion-grid>
-  <ion-button href="#" color="primary"> Suspender </ion-button>
-  <ion-button href="#" color="primary"> Finalizar </ion-button>
-  <ion-button href="#" color="primary"> Eliminar </ion-button>
+<ion-content [fullscreen]="true" padding>
+  <ion-card>
+    <ion-card-header color="success">
+      <ion-text style="text-align: center" color="light">
+        <h4>Detalle del Partido</h4>
+      </ion-text>
+    </ion-card-header>
+    <ion-grid>
+      <ion-row>
+        <ion-text style="font-family: Helvetica; font-size: 30px" color="dark">
+          {{partido.equipo1.nombre}} <img src={{partido.equipo1.logo}} width="30" height="30" /> {{partido.gol1}}
+            - {{partido.gol2}} <img src={{partido.equipo2.logo}} width="30" height="30" /> {{partido.equipo2.nombre}}
+        </ion-text>
+      </ion-row>
+      <ion-row>
+        <ion-text style="text-align: center; font-family: Helvetica; font-size: 20px; font-weight: bold;">
+          Estado: {{partido.estado}}
+        </ion-text>
+      </ion-row>
+      <ion-card-content>
+        <ion-list>
+          <ion-text style="text-align: center; font-family: Impact; font-size: 30px" color="dark">
+            Eventos del Partido
+          </ion-text>
+          <ion-item *ngFor="let valor of partido.evento">
+            <ion-label>
+              <h2>
+                Comentario: {{valor}}
+              </h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-grid>
+    <ion-button (click)="createEvent()" color="primary">
+      <ion-icon name="notifications-outline"></ion-icon>
+      Agregar Evento
+    </ion-button>
+    <ion-button (click)="suspendPartido()" color="medium" *ngIf=" partido.estado === 'En juego'">
+      <ion-icon name="ban-outline"></ion-icon>
+      Suspender
+    </ion-button>
+    <ion-button (click)="finalizePartido()" color="dark" *ngIf=" partido.estado === 'En juego'">
+      <ion-icon name="close-circle-outline"></ion-icon>
+      Finalizar
+    </ion-button>
+    <ion-button (click)="deletePartido()" color="danger" *ngIf=" partido.estado === 'En juego'">
+      <ion-icon name="trash-outline"></ion-icon>
+      Eliminar
+    </ion-button>
+  </ion-card>
 </ion-content>

@@ -1,22 +1,26 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Fútbol
-    </ion-title>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-button routerLink='../' fill="clear">
+        <img src="assets/img/Icono.png" height="45">
+      </ion-button>
+    <ion-button routerLink='../' fill="clear" color="light">  Inicio </ion-button>
+    <ion-button [routerLink]="['../catalogo']" fill="clear" color="light"> Partidos </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Futbol</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <app-catalogo></app-catalogo>
   <div id="container">
-    <strong>Partidos en vivo</strong>
-    <p>Escoja una opcion</p>
-    <ion-button href="app-catalogo" color="primary"> Ver Partidos </ion-button>
-    <ion-button color="success"> Nuevo Partido </ion-button>
+    <ion-card>
+      <img src="assets/img/wallpaper.jpg">
+      <ion-card-title>
+        <strong>Partidos en vivo</strong>
+      </ion-card-title>
+      <p>Dale click para conocer los partidos de la primera división</p>
+      <ion-button [routerLink]="['../catalogo']" color="success">
+        <ion-icon name="football-outline"></ion-icon> Ver Partidos
+      </ion-button>
+    </ion-card>
   </div>
 </ion-content>

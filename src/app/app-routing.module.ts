@@ -19,7 +19,7 @@ const routes: Routes = [
         loadChildren: () => import('./catalogo/catalogo.module').then( m => m.CatalogoPageModule)
       },
       {
-        path: ':catalogoId',
+        path: 'detalle/:catalogoId',
         loadChildren: () => import('./catalogo/detail/detail.module').then( m => m.DetailPageModule)
       }
     ]
