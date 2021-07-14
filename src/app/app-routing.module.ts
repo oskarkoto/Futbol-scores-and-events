@@ -13,7 +13,16 @@ const routes: Routes = [
   },
   {
     path: 'catalogo',
-    loadChildren: () => import('./catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+      },
+      {
+        path: ':catalogoId',
+        loadChildren: () => import('./catalogo/detail/detail.module').then( m => m.DetailPageModule)
+      }
+    ]
   },
 ];
 

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle de Partido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      {{partido.equipo1.nombre}} <img src={{partido.equipo1.logo}} width="25" height="25"/> VS
+      {{partido.equipo2.nombre}} <img src={{partido.equipo2.logo}} width="25" height="25"/>
+    </ion-row>
+    <ion-row>
+      Estado: {{partido.estado}}
+    </ion-row>
+  </ion-grid>
+  <ion-button href="#" color="primary"> Suspender </ion-button>
+  <ion-button href="#" color="primary"> Finalizar </ion-button>
+  <ion-button href="#" color="primary"> Eliminar </ion-button>
+</ion-content>

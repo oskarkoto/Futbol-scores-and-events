@@ -1,4 +1,5 @@
-import { Equipo, Partido } from './catalogo.model';
+import { Partido } from './catalogo.model';
+import { CatalogoService } from './catalogo.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -8,35 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./catalogo.page.scss'],
 })
 export class CatalogoPage implements OnInit {
-  equipos: Equipo[] = [
-    {
-      nombre: 'Saprissa',
-      logo: './assets/img/saprissa.png'
-    },
-    {
-      nombre: 'LDA',
-      logo: './assets/img/lda.png'
-    }
-  ];
-
-  partidos: Partido[] = [
-    {
-      id: 'partido-1',
-      estado: 'En juego',
-      equipo1: this.equipos[0],
-      equipo2: this.equipos[1],
-    },
-    {
-      id: 'partido-2',
-      estado: 'En juego',
-      equipo1: this.equipos[1],
-      equipo2: this.equipos[0],
-    }
-  ];
-
-  constructor() { }
+  partidos: Partido[];
+  constructor(private catalogoServicio: CatalogoService) { }
 
   ngOnInit() {
+    this.partidos = this.catalogoServicio.getAll();
   }
 
 }
