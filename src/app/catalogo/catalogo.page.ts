@@ -16,4 +16,8 @@ export class CatalogoPage implements OnInit {
     this.partidos = this.catalogoServicio.getAll();
   }
 
+  ionViewWillEnter(){
+    this.partidos = this.catalogoServicio.getAll();
+  }
+
 }

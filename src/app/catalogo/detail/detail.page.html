@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Detalle de Partido</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
@@ -13,8 +14,19 @@
     <ion-row>
       Estado: {{partido.estado}}
     </ion-row>
+    <ion-list>
+      <ion-list-header> Eventos del partido </ion-list-header>
+      <ion-item *ngFor="let valor of partido.evento">
+        <ion-label>
+          <h2>
+            Evento: {{valor}}
+          </h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </ion-grid>
-  <ion-button href="#" color="primary"> Suspender </ion-button>
-  <ion-button href="#" color="primary"> Finalizar </ion-button>
-  <ion-button href="#" color="primary"> Eliminar </ion-button>
+  <ion-button (click)="createEvent()" color="primary"> Agregar Evento </ion-button>
+  <ion-button (click)="suspendPartido()" color="primary"> Suspender </ion-button>
+  <ion-button (click)="finalizePartido()" color="primary"> Finalizar </ion-button>
+  <ion-button (click)="deletePartido()" color="primary"> Eliminar </ion-button>
 </ion-content>

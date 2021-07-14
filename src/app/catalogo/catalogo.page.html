@@ -16,7 +16,7 @@
         <h3>
           Estado: {{partido.estado}}
         </h3>
-        <ion-button href="#" color="primary"> Detalles </ion-button>
+        <ion-button [routerLink] = "['./', partido.id]" color="primary"> Detalles </ion-button>
       </ion-label>
     </ion-item>
   </ion-list>

@@ -8,4 +8,5 @@ export interface Partido{
   estado: string;
   equipo1: Equipo;
   equipo2: Equipo;
+  evento: string[];
 }
